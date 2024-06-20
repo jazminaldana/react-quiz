@@ -1,0 +1,102 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "babel",
+    "eslint-plugin-import-helpers",
+    "eslint-plugin-import"
+  ],
+  "env": {
+  "browser": true,
+  "node": true
+},
+  "rules": {
+    "no-case-declarations": "off",
+    "no-unused-vars": "off",
+    "no-restricted-syntax": 0,
+    "prefer-destructuring": 0,
+    "arrow-body-style": [2, "as-needed"],
+    "class-methods-use-this": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["external", "builtin"],
+          "internal",
+          ["sibling", "parent", "index"]
+        ],
+        "newlines-between": "always",
+        "alphabetize": { "order": "asc", "caseInsensitive": true }
+      }
+    ],
+    "indent": 0,
+    "import-helpers/order-imports": 0,
+    "import/imports-first": 0,
+    "no-unsafe-optional-chaining": 0,
+    "import/newline-after-import": 0,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-named-as-default": 0,
+    "import/no-unresolved": 2,
+    "import/no-webpack-loader-syntax": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/aria-props": 2,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/mouse-events-have-key-events": 2,
+    "jsx-a11y/role-has-required-aria-props": 2,
+    "jsx-a11y/role-supports-aria-props": 2,
+    "max-len": ["error", {
+      "code": 136,
+      "ignoreComments": true,
+      "ignoreUrls": true,
+      "ignoreRegExpLiterals": true
+    }],
+    "react/jsx-first-prop-new-line": [1, "multiline"],
+    "react/jsx-max-props-per-line": [1, { "maximum": 1, "when": "multiline" }],
+    "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+    "react/jsx-wrap-multilines": ["error", {
+      "declaration": "parens-new-line",
+      "assignment": "parens-new-line",
+      "return": "parens-new-line",
+      "arrow": "parens-new-line",
+      "condition": "parens-new-line",
+      "logical": "parens-new-line",
+      "prop": "parens-new-line"
+    }],
+    "react/jsx-props-no-multi-spaces": ["error"],
+    "react/jsx-no-useless-fragment": ["error"],
+    "react/prop-types": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "rules": {
+        "no-undef": "off",
+        "react/prop-types": "off",
+        "space-infix-ops": "off",
+        "object-curly-spacing": "off"
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+      ]
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["app"],
+        "extensions": [".jsx", ".js", ".ts", ".tsx"]
+      },
+      "webpack": { "config": "./internals/webpack/webpack.prod.babel.js" }
+    },
+    "react": {
+      "version": "detect"
+    }
+  }
+}
